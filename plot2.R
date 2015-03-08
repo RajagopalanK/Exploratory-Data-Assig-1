@@ -1,14 +1,17 @@
 # Matt Henn
 # Exploratory Data Analysis
 # Coursera
+# March 8, 2015
 
-# get the data
+# get the data. Note that the directory will have to be changed
+# to the location the data downloaded to locally in order for
+# the script to work. The csv is on the github repo. 
 
-dat <- household_power_consumption
+trimmed.data <- read.csv("~/current classes/coursera dssp/exploratory data/trimmed data")
+dat <- trimmed.data
 
 # subset the dates of interest
-
-subdat <- subset(dat, dat$Date == "1/2/2007" | dat$Date == "2/2/2007")
+library(lubridate)
 subdat$datecombined <- dmy(subdat$Date) + hms(subdat$Time)
 
 

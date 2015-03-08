@@ -1,14 +1,17 @@
 # Matt Henn
 # Exploratory Data Analysis
 # Coursera
+# March 8, 2015
 
-# get the data
+# get the data. Note that the directory will have to be changed
+# to the location the data downloaded to locally in order for
+# the script to work. The csv is on the github repo. 
 
-dat <- household_power_consumption
+trimmed.data <- read.csv("~/current classes/coursera dssp/exploratory data/trimmed data")
+dat <- trimmed.data
 
 # subset the dates of interest
-
-subdat <- subset(dat, dat$Date == "1/2/2007" | dat$Date == "2/2/2007")
+library(lubridate)
 subdat$datecombined <- dmy(subdat$Date) + hms(subdat$Time)
 
 # create the plots
@@ -31,7 +34,7 @@ lines(subdat$datecombined, subdat$Sub_metering_3, col = "blue")
 legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
        col = c("black", "red", "blue"),
        lty = c(1,1,1),
-       cex = 0.8,
+       cex = 0.3,
        xjust = 1,
        y.intersp = 0.75,
        bty = "n"
